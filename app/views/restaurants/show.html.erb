@@ -4,3 +4,12 @@
 <h5 class="fs-5 m-3"><%= @restaurant.phone_number %></h5>
 
 <%= link_to 'Back to all restaurants', restaurants_path, :class => "btn btn-outline-secondary btn-sm m-3" %>
+<%= link_to 'Leave a review', new_restaurant_review_path(@restaurant), :class => "btn btn-outline-secondary btn-sm m-3" %>
+
+<% @restaurant.reviews.each do |review| %>
+  <p><%= review.content %></p>
+  <%= link_to "Remove",
+                  review_path(review),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+<% end %>
