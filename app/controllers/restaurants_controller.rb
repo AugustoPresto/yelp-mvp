@@ -21,6 +21,10 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  def japanese
+    @restaurants = Restaurant.where(category: "japanese")
+  end
+
   private
 
   def restaurant_params
